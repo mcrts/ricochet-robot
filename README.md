@@ -55,7 +55,7 @@ $ sudo python setup.py install
 or with pip
 
 ```bash
-$ pip install .
+$ pip install ricochet-robot
 ```
 
 To Do
