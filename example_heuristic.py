@@ -20,17 +20,5 @@ gs = rr.gamestate.GameState.construct_from_board(
     el.Symbol('RED', 'STAR')
 )
 
-solver = rr.solver.BFSSolver(gs)
-start_state, end_state, history, prev_tree = solver.solve()
-print('Solved in {} steps !'.format(len(history)))
-
-path = solver.compute_path(start_state, end_state)
-path = list(map(lambda x: (x[0].hex(), x[1], x[2].hex()), path))
-print('Optimal path use {} steps !'.format(len(path)))
-pprint.pprint(path, width=160)
-
-state = gs
-for _, action, _ in path:
-    new_state = state.act(action)
-    state = new_state
-print(state.goal_achieved())
+heatmap = rr.solver.Heuristic.heatmap(gs)
+print(rr.solver.Heuristic.heuristic_heatmap(heatmap, gs))

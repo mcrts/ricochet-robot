@@ -20,6 +20,8 @@ var/
 .installed.cfg
 *.egg
 
-
 # IPython Notebook
 .ipynb_checkpoints
+
+# VSCode
+.vscode

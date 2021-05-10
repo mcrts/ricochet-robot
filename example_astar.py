@@ -13,18 +13,18 @@ gs = rr.gamestate.GameState.construct_from_board(
     board,
     frozenset([
         (el.Coordinate(3, 7), el.Robot('RED')),
-        (el.Coordinate(2, 8), el.Robot('GREEN')),
-        (el.Coordinate(0, 2), el.Robot('BLUE')),
-        (el.Coordinate(15, 14), el.Robot('YELLOW'))
+        (el.Coordinate(12, 4), el.Robot('GREEN')),
+        (el.Coordinate(14, 4), el.Robot('BLUE')),
+        (el.Coordinate(0, 2), el.Robot('YELLOW'))
     ]),
     el.Symbol('RED', 'STAR')
 )
 
-solver = rr.solver.BFSSolver(gs)
-start_state, end_state, history, prev_tree = solver.solve()
-print('Solved in {} steps !'.format(len(history)))
+solver = rr.solver.AStarSolver(gs)
+start_state, end_state, tree = solver.solve()
+print('Solved in {} steps !'.format(len(tree)))
 
-path = solver.compute_path(start_state, end_state)
+path = solver.compute_path(end_state)
 path = list(map(lambda x: (x[0].hex(), x[1], x[2].hex()), path))
 print('Optimal path use {} steps !'.format(len(path)))
 pprint.pprint(path, width=160)
